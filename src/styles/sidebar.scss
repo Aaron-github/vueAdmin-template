@@ -4,8 +4,7 @@
     min-height: 100%;
     transition: margin-left .28s;
     margin-left: 180px;
-  }
-  // 侧边栏
+  } // 侧边栏
   .sidebar-container {
     transition: width 0.28s;
     width: 180px !important;
@@ -16,13 +15,12 @@
     bottom: 0;
     left: 0;
     z-index: 1001;
-    overflow: hidden;
-    //reset element-ui css
+    overflow: hidden; //reset element-ui css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
     }
     .scrollbar-wrapper {
-      height: calc(100% + 15px);
+      height: calc(100% + 17px);
       .el-scrollbar__view {
         height: 100%;
       }
@@ -60,7 +58,7 @@
     }
     .el-submenu {
       overflow: hidden;
-      &>.el-submenu__title {
+      & > .el-submenu__title {
         padding-left: 10px !important;
         .el-submenu__icon-arrow {
           display: none;
@@ -69,8 +67,8 @@
     }
     .el-menu--collapse {
       .el-submenu {
-        &>.el-submenu__title {
-          &>span {
+        & > .el-submenu__title {
+          & > span {
             height: 0;
             width: 0;
             overflow: hidden;
@@ -81,8 +79,7 @@
       }
     }
   }
-  .sidebar-container .nest-menu .el-submenu>.el-submenu__title,
-  .sidebar-container .el-submenu .el-menu-item {
+  .sidebar-container .nest-menu .el-submenu > .el-submenu__title, .sidebar-container .el-submenu .el-menu-item {
     min-width: 180px !important;
     background-color: $subMenuBg !important;
     &:hover {
@@ -91,9 +88,7 @@
   }
   .el-menu--collapse .el-menu .el-submenu {
     min-width: 180px !important;
-  }
-
-  //适配移动端
+  } //适配移动端
   .mobile {
     .main-container {
       margin-left: 0px;
@@ -110,8 +105,7 @@
     }
   }
   .withoutAnimation {
-    .main-container,
-    .sidebar-container {
+    .main-container, .sidebar-container {
       transition: none;
     }
   }
