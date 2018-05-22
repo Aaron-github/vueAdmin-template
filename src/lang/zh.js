@@ -27,7 +27,7 @@ export default {
     lineChart: '折线图',
     mixChart: '混合图表',
     example: '综合实例',
-    Table: 'Table',
+    Table: '表格',
     dynamicTable: '动态Table',
     dragTable: '拖拽Table',
     inlineEditTable: 'Table内编辑',
@@ -50,7 +50,8 @@ export default {
     exportZip: 'Export Zip',
     theme: '换肤',
     clipboardDemo: 'Clipboard',
-    i18n: '国际化'
+    i18n: '国际化',
+    Tree: '树'
   },
   navbar: {
     logOut: '退出登录',
