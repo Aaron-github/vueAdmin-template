@@ -97,6 +97,21 @@ export const constantRouterMap = [{
 },
 
 {
+  path: '/international',
+  component: Layout,
+  children: [{
+    path: 'index',
+    name: 'International',
+    component: () =>
+        import('@/views/i18n/index'),
+    meta: {
+      title: '国际化',
+      icon: 'international'
+    }
+  }]
+},
+
+{
   path: '*',
   redirect: '/404',
   hidden: true
