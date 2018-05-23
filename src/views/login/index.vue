@@ -1,39 +1,50 @@
 <template>
   <div class="login-container">
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <h3 class="title">UE-SPA 1.0</h3>
+      <div class="title-container">
+        <h3 class="title">{{$t('login.title')}}</h3>
+        <lang-select class="set-language"></lang-select>
+      </div>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user" />
         </span>
-        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="请输入账号" />
+        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="username" />
       </el-form-item>
+
       <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon-class="password"></svg-icon>
         </span>
-        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="请输入密码"></el-input>
+        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password"></el-input>
         <span class="show-pwd" @click="showPwd">
           <svg-icon icon-class="eye" />
         </span>
       </el-form-item>
-      <el-form-item>
-        <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
-          登录
-        </el-button>
-      </el-form-item>
+
+      <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
+        {{$t('login.logIn')}}
+      </el-button>
+
       <div class="tips">
-        <span style="margin-right:20px;">测试账号: admin</span>
-        <span> 测试密码: admin</span>
+        <span style="margin-right:20px;">{{$t('login.username')}} : admin</span>
+        <span>{{$t('login.password')}}: {{$t('login.any')}}</span>
+      </div>
+      <div class="tips">
+        <span style="margin-right:18px;">{{$t('login.username')}} : editor</span>
+        <span>{{$t('login.password')}} : {{$t('login.any')}}</span>
       </div>
     </el-form>
+
   </div>
 </template>
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
+import LangSelect from '@/components/LangSelect'
 
 export default {
+  components: { LangSelect },
   name: 'login',
   data() {
     const validateUsername = (rule, value, callback) => {
@@ -128,6 +139,7 @@ $light_gray: #eee;
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
+
 .login-container {
   position: fixed;
   height: 100%;
@@ -161,13 +173,22 @@ $light_gray: #eee;
       font-size: 20px;
     }
   }
-  .title {
-    font-size: 26px;
-    font-weight: 400;
-    color: $light_gray;
-    margin: 0px auto 40px auto;
-    text-align: center;
-    font-weight: bold;
+  .title-container {
+    position: relative;
+    .title {
+      font-size: 26px;
+      font-weight: 400;
+      color: $light_gray;
+      margin: 0px auto 40px auto;
+      text-align: center;
+      font-weight: bold;
+    }
+    .set-language {
+      color: #fff;
+      position: absolute;
+      top: 5px;
+      right: 0px;
+    }
   }
   .show-pwd {
     position: absolute;
@@ -177,6 +198,11 @@ $light_gray: #eee;
     color: $dark_gray;
     cursor: pointer;
     user-select: none;
+  }
+  .thirdparty-button {
+    position: absolute;
+    right: 35px;
+    bottom: 28px;
   }
 }
 </style>

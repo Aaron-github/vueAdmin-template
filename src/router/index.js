@@ -31,13 +31,17 @@ export const constantRouterMap = [{
   path: '/login',
   component: _import('login/index'),
   hidden: true
-},
-{
-  path: '/404',
-  component: _import('404'),
-  hidden: true
-},
-{
+}]
+
+export default new Router({
+  // mode: 'history', //后端支持可开
+  scrollBehavior: () => ({
+    y: 0
+  }),
+  routes: constantRouterMap
+})
+
+export const asyncRouterMap = [{
   path: '',
   component: Layout,
   redirect: 'dashboard',
@@ -46,7 +50,7 @@ export const constantRouterMap = [{
     path: 'dashboard',
     component: _import('dashboard/index'),
     meta: {
-      title: '首页',
+      title: 'dashboard',
       icon: 'dashboard'
     }
   }]
@@ -58,7 +62,7 @@ export const constantRouterMap = [{
   redirect: '/example/table',
   name: 'Example',
   meta: {
-    title: '综合实例',
+    title: 'example',
     icon: 'example'
   },
   children: [{
@@ -66,7 +70,7 @@ export const constantRouterMap = [{
     name: 'Table',
     component: _import('table/index'),
     meta: {
-      title: '表格',
+      title: 'table',
       icon: 'table'
     }
   },
@@ -75,14 +79,25 @@ export const constantRouterMap = [{
     name: 'Tree',
     component: _import('tree/index'),
     meta: {
-      title: '树',
+      title: 'tree',
       icon: 'tree'
     }
   }
   ]
-},
-
-{
+}, {
+  path: '/form',
+  component: Layout,
+  children: [{
+    path: 'index',
+    name: 'Form',
+    component: _import('form/index'),
+    meta: {
+      title: 'form',
+      icon: 'form',
+      roles: ['admin'] // you can set roles in root nav
+    }
+  }]
+}, {
   path: '/i18n',
   component: Layout,
   children: [{
@@ -90,10 +105,42 @@ export const constantRouterMap = [{
     name: 'i18n',
     component: _import('i18n/index'),
     meta: {
-      title: '国际化',
+      title: 'i18n',
       icon: 'international'
     }
   }]
+}, {
+  path: '/permission',
+  component: Layout,
+  redirect: '/permission/index',
+  alwaysShow: true, // will always show the root menu
+  meta: {
+    title: 'permission',
+    icon: 'lock',
+    roles: ['admin', 'editor'] // you can set roles in root nav
+  },
+  children: [{
+    path: 'page',
+    component: _import('permission/page'),
+    name: 'pagePermission',
+    meta: {
+      title: 'pagePermission',
+      roles: ['admin'] // or you can only set roles in sub nav
+    }
+  }, {
+    path: 'directive',
+    component: _import('permission/directive'),
+    name: 'directivePermission',
+    meta: {
+      title: 'directivePermission'
+      // if do not set roles, means: this page does not require permission
+    }
+  }]
+},
+{
+  path: '/404',
+  component: _import('404'),
+  hidden: true
 },
 
 {
@@ -102,26 +149,3 @@ export const constantRouterMap = [{
   hidden: true
 }
 ]
-
-export default new Router({
-  // mode: 'history', //后端支持可开
-  scrollBehavior: () => ({
-    y: 0
-  }),
-  routes: constantRouterMap
-})
-
-export const asyncRouterMap = [{
-  path: '/form',
-  component: Layout,
-  children: [{
-    path: 'index',
-    name: 'Form',
-    component: _import('form/index'),
-    meta: {
-      title: '表单',
-      icon: 'form',
-      roles: ['admin'] // you can set roles in root nav
-    }
-  }]
-}]

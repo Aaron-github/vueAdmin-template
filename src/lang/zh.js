@@ -51,7 +51,8 @@ export default {
     theme: '换肤',
     clipboardDemo: 'Clipboard',
     i18n: '国际化',
-    Tree: '树'
+    tree: '树',
+    table: '表格'
   },
   navbar: {
     logOut: '退出登录',
