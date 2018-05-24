@@ -31,17 +31,7 @@ export const constantRouterMap = [{
   path: '/login',
   component: _import('login/index'),
   hidden: true
-}]
-
-export default new Router({
-  // mode: 'history', //后端支持可开
-  scrollBehavior: () => ({
-    y: 0
-  }),
-  routes: constantRouterMap
-})
-
-export const asyncRouterMap = [{
+}, {
   path: '',
   component: Layout,
   redirect: 'dashboard',
@@ -54,9 +44,17 @@ export const asyncRouterMap = [{
       icon: 'dashboard'
     }
   }]
-},
+}]
 
-{
+export default new Router({
+  // mode: 'history', //后端支持可开
+  scrollBehavior: () => ({
+    y: 0
+  }),
+  routes: constantRouterMap
+})
+
+export const asyncRouterMap = [{
   path: '/example',
   component: Layout,
   redirect: '/example/table',
@@ -93,11 +91,14 @@ export const asyncRouterMap = [{
     component: _import('form/index'),
     meta: {
       title: 'form',
-      icon: 'form',
-      roles: ['admin'] // you can set roles in root nav
+      icon: 'form'
     }
-  }]
-}, {
+  }],
+  meta: {
+    roles: ['admin'] // you can set roles in root nav}
+  }
+},
+{
   path: '/i18n',
   component: Layout,
   children: [{
@@ -109,7 +110,8 @@ export const asyncRouterMap = [{
       icon: 'international'
     }
   }]
-}, {
+},
+{
   path: '/permission',
   component: Layout,
   redirect: '/permission/index',

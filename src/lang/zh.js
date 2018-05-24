@@ -111,7 +111,9 @@ export default {
     draft: '草稿',
     delete: '删除',
     cancel: '取 消',
-    confirm: '确 定'
+    confirm: '确 定',
+    pageviews: '总浏览量',
+    displaytime: '显示时间'
   },
   errorLog: {
     tips: '请点击右上角bug小图标',
